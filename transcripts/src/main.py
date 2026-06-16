@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from asr import run_asr_for_video
+from caption import run_caption_for_video
 from keyframes import create_keyframes
 from ocr import run_ocr_for_video
 from utils import ensure_dir
@@ -69,13 +70,18 @@ def run_pipeline_for_video(video_path: Path) -> Path:
         source_info=source_info,
     )
 
-    print("[2/3] OCR trên keyframe")
+    print("[2/4] OCR trên keyframe")
     run_ocr_for_video(
         video_output_dir=video_output_dir,
         languages=OCR_LANGUAGES,
     )
 
-    print("[3/3] ASR (Whisper) chuyển audio -> text")
+    print("[3/4] Sinh caption tự động cho keyframe (BLIP)")
+    run_caption_for_video(
+        video_output_dir=video_output_dir,
+    )
+
+    print("[4/4] ASR (Whisper) chuyển audio -> text")
     run_asr_for_video(
         video_path=video_path,
         video_output_dir=video_output_dir,

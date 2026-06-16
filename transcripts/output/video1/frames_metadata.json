@@ -166,6 +166,11 @@
           ]
         }
       ]
+    },
+    "caption": {
+      "status": "done",
+      "text": "a woman in a dress is holding a microphone",
+      "model": "Salesforce/blip-image-captioning-base"
     }
   }
 ]

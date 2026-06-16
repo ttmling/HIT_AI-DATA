@@ -27,6 +27,19 @@ def run_asr_for_video(video_path: Path, video_output_dir: Path, video_id: str, m
 
     transcript_segments = []
     for index, segment in enumerate(segments, start=1):
+        
+        # Gom tất cả độ tự tin của từng từ trong câu này lại
+        word_confidences = []
+        if segment.words:
+            for word in segment.words:
+                word_confidences.append(word.probability) # probability chính là độ tự tin của từ đó
+        
+        # Tính trung bình cộng độ tự tin của cả câu
+        if word_confidences:
+            avg_confidence = round(sum(word_confidences) / len(word_confidences), 4)
+        else:
+            avg_confidence = None 
+            
         transcript_segments.append(
             {
                 "segment_id": f"{video_id}_s{index:06d}",
@@ -35,7 +48,7 @@ def run_asr_for_video(video_path: Path, video_output_dir: Path, video_id: str, m
                 "start_text": seconds_to_time_text(segment.start),
                 "end_text": seconds_to_time_text(segment.end),
                 "text": segment.text.strip(),
-                "confidence": None,
+                "confidence": avg_confidence
             }
         )
 

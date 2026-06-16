@@ -90,6 +90,7 @@ def remove_duplicate_frames(
             "timestamp_text": seconds_to_time_text(timestamp),
             "image_path": str(final_path).replace("\\", "/"),
             "ocr": {"status": "pending", "text": "", "avg_confidence": None, "boxes": []},
+            "caption": {"status": "pending", "text": "", "model": None},
         })
 
     return frames_metadata
