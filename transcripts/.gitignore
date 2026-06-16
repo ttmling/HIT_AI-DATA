@@ -13,14 +13,6 @@ __pycache__/
 *.onnx
 *.pkl
 
-# data / media (tuỳ project AI)
-data/
-datasets/
-videos/
-images/
-frames/
-logs/
-models/
 
 # OS
 .DS_Store
