@@ -1,0 +1,17 @@
+{
+  "video_id": "video1",
+  "status": "done",
+  "language": "vi",
+  "asr_model": "faster-whisper/small",
+  "segments": [
+    {
+      "segment_id": "video1_s000001",
+      "start": 0.0,
+      "end": 9.0,
+      "start_text": "00:00:00",
+      "end_text": "00:00:09",
+      "text": "Tôi đau đơn, tôi gục ngã, nhưng điều quan trọng nhất là tôi tìm thấy sức mạnh của nội tài và tôi chiến đấu vì nó.",
+      "confidence": null
+    }
+  ]
+}

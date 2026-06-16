@@ -1,0 +1,29 @@
+# environment
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# models / ML files
+*.pt
+*.pth
+*.bin
+*.onnx
+*.pkl
+
+# data / media (tuỳ project AI)
+data/
+datasets/
+videos/
+images/
+frames/
+logs/
+models/
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
