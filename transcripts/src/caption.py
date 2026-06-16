@@ -4,10 +4,6 @@ from utils import read_json, write_json
 
 
 def _load_blip(device: str = "cpu"):
-    """
-    Load BLIP image-captioning model và processor.
-    Trả về None nếu transformers chưa được cài, thay vì crash.
-    """
     try:
         from transformers import BlipForConditionalGeneration, BlipProcessor
         import torch
@@ -21,6 +17,7 @@ def _load_blip(device: str = "cpu"):
     model = BlipForConditionalGeneration.from_pretrained(model_name).to(device)
     model.eval()
     return processor, model, torch
+
 
 
 def generate_caption(image_path: Path, processor, model, torch, device: str = "cpu") -> str:
@@ -37,14 +34,12 @@ def generate_caption(image_path: Path, processor, model, torch, device: str = "c
     return caption.strip()
 
 
+
 def run_caption_for_video(
     video_output_dir: Path,
     device: str = "cpu",
 ) -> list[dict]:
-    """
-    Đọc frames_metadata.json, sinh caption cho từng keyframe bằng BLIP,
-    ghi kết quả vào trường 'caption' của từng frame rồi lưu lại.
-    """
+    
     frames_metadata_path = video_output_dir / "frames_metadata.json"
     frames_metadata = read_json(frames_metadata_path, [])
 

@@ -52,21 +52,17 @@ def remove_duplicate_frames(
     selected_index = 0
 
     for raw_index, raw_path in enumerate(raw_frames, start=1):
-        # Bước 1: trích xuất Vector của ảnh hiện tại
-        current_features = extract_features(raw_path)
+        current_features = extract_features(raw_path)   # trích xuất Vector của ảnh hiện tại
 
-        # Bước 2: So sánh với TẤT CẢ các ảnh đã có trong Database
+        # So sánh với TẤT CẢ các ảnh đã có trong Database
         is_duplicate = False
         for saved_feature in saved_features:
-            # Tính Cosine Similarity (Độ tương đồng góc giữa 2 vector)
-            similarity = torch.mm(current_features, saved_feature.t()).item()
+            similarity = torch.mm(current_features, saved_feature.t()).item()   # Tính Cosine Similarity (Độ tương đồng góc giữa 2 vector)
             
-            # Nếu độ tương đồng lớn hơn ngưỡng (nghĩa là ảnh quá giống một ảnh nào đó trong DB)
             if similarity >= duplicate_threshold:
                 is_duplicate = True
                 break # Dừng kiểm tra, đánh dấu là trùng luôn
 
-        # Bước 3: Xử lý kết quả
         if is_duplicate:
             raw_path.unlink(missing_ok=True) # Xóa ảnh trùng đi
             continue
@@ -103,7 +99,7 @@ def create_keyframes(
     duplicate_threshold: float, # Ngưỡng mặc định cho mô hình CLIP
     source_info: dict | None = None,
 ) -> list[dict]:
-    """Hàm điều phối tổng (Giữ nguyên cấu trúc gọi hàm)."""
+    
     video_output_dir = output_dir / video_id
     frames_dir = video_output_dir / "frames"
     ensure_dir(frames_dir)

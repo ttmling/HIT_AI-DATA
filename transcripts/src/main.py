@@ -96,7 +96,6 @@ def run_pipeline_for_video(video_path: Path) -> Path:
 
 def main() -> None:
     videos = find_videos_in_data_folder(DATA_DIR)
-
     print(f"Found {len(videos)} video(s) in data/")
 
     results = []

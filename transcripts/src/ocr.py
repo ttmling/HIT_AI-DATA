@@ -4,7 +4,6 @@ from utils import read_json, write_json
 
 
 def normalize_bbox(bbox) -> list[list[float]]:
-    """Chuyen toa do bbox cua EasyOCR ve kieu float de ghi JSON khong loi."""
     return [
         [float(pt[0]), float(pt[1])]
         for pt in bbox
@@ -12,10 +11,6 @@ def normalize_bbox(bbox) -> list[list[float]]:
 
 
 def _load_easyocr_reader(languages: list[str]):
-    """
-    Neu chua cai EasyOCR, ham nay tra ve None de pipeline bao trang thai
-    skipped thay vi crash kho hieu.
-    """
     try:
         import easyocr
     except ImportError:
@@ -66,7 +61,7 @@ def run_ocr_for_video(video_output_dir: Path, languages: list[str]) -> list[dict
             "avg_confidence": (
                 sum(confidences) / len(confidences) if confidences else None
             ),
-            "boxes": boxes,
+            "boxes": boxes
         }
 
     write_json(frames_metadata_path, frames_metadata)
