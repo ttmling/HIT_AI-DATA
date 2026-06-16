@@ -4,7 +4,7 @@ from utils import read_json, write_json
 
 
 DEFAULT_CONFIDENCE_THRESHOLD = 0.5
-
+MODEL_NAME = "yolov8n"
 
 def _load_yolo():
     try:
@@ -12,7 +12,7 @@ def _load_yolo():
     except ImportError:
         return None
 
-    model = YOLO("yolov8n.pt")
+    model = YOLO(f"{MODEL_NAME}.pt")
     return model
 
 
@@ -55,7 +55,6 @@ def run_detection_for_video(
     frames_metadata_path = video_output_dir / "frames_metadata.json"
     frames_metadata = read_json(frames_metadata_path, [])
 
-    MODEL_NAME = "yolov8n"
     model = _load_yolo()
 
     if model is None:
