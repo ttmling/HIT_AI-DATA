@@ -3,10 +3,12 @@ from pathlib import Path
 from utils import seconds_to_time_text, write_json
 
 
+### trích xuất voice-->text, lưu output ra transcript.json
 def run_asr_for_video(video_path: Path, video_output_dir: Path, video_id: str, model_size: str) -> dict:
-
+    # Đường dẫn file output
     transcript_path = video_output_dir / "transcript.json"
 
+    # Nếu chưa cài faster-whisper → ghi trạng thái skipped thay vì crash
     try:
         from faster_whisper import WhisperModel
     except ImportError as e:
@@ -25,11 +27,11 @@ def run_asr_for_video(video_path: Path, video_output_dir: Path, video_id: str, m
 
     segments, info = model.transcribe(
         str(video_path),
-        beam_size=5
+        beam_size=5 # giữ lại số câu(bằng với beam_size) có điểm số cao nhất để tiếp tục tạo ra các từ tiếp theo.
     )
 
     transcript_segments = []
-
+    # Mỗi segment tương ứng một đoạn thoại liên tục
     for index, segment in enumerate(segments, start=1):
         transcript_segments.append({
             "segment_id": f"{video_id}_s{index:06d}",

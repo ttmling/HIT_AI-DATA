@@ -1,0 +1,12 @@
+{
+  "video_id": "video2",
+  "filename": "video2.mp4",
+  "source_path": "data/video2.mp4",
+  "source": {
+    "storage": "local",
+    "source_path": "data/video2.mp4"
+  },
+  "duration": 26.633333,
+  "frame_interval_seconds": 3,
+  "selected_keyframes": 9
+}

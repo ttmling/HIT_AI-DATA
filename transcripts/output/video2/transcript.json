@@ -1,0 +1,96 @@
+{
+  "video_id": "video2",
+  "status": "done",
+  "language": "vi",
+  "asr_model": "faster-whisper/small",
+  "segments": [
+    {
+      "segment_id": "video2_s000001",
+      "start": 0.0,
+      "end": 1.5,
+      "start_text": "00:00:00",
+      "end_text": "00:00:02",
+      "text": "Em ơi, ra!"
+    },
+    {
+      "segment_id": "video2_s000002",
+      "start": 1.5,
+      "end": 3.2600000000000002,
+      "start_text": "00:00:02",
+      "end_text": "00:00:03",
+      "text": "Con cũng lòng kêu như thế nào thế?"
+    },
+    {
+      "segment_id": "video2_s000003",
+      "start": 3.2600000000000002,
+      "end": 4.16,
+      "start_text": "00:00:03",
+      "end_text": "00:00:04",
+      "text": "Lòng kêu"
+    },
+    {
+      "segment_id": "video2_s000004",
+      "start": 4.16,
+      "end": 6.16,
+      "start_text": "00:00:04",
+      "end_text": "00:00:06",
+      "text": "Gra voice anh nghe thử đi"
+    },
+    {
+      "segment_id": "video2_s000005",
+      "start": 6.16,
+      "end": 7.6000000000000005,
+      "start_text": "00:00:06",
+      "end_text": "00:00:08",
+      "text": "Thôi đi má"
+    },
+    {
+      "segment_id": "video2_s000006",
+      "start": 7.6000000000000005,
+      "end": 9.1,
+      "start_text": "00:00:08",
+      "end_text": "00:00:09",
+      "text": "Voice anh nghe thử đi"
+    },
+    {
+      "segment_id": "video2_s000007",
+      "start": 9.1,
+      "end": 11.38,
+      "start_text": "00:00:09",
+      "end_text": "00:00:11",
+      "text": "Hề nhớ là đừng kể ai nha"
+    },
+    {
+      "segment_id": "video2_s000008",
+      "start": 11.38,
+      "end": 12.4,
+      "start_text": "00:00:11",
+      "end_text": "00:00:12",
+      "text": "An biết rồi"
+    },
+    {
+      "segment_id": "video2_s000009",
+      "start": 12.4,
+      "end": 14.0,
+      "start_text": "00:00:12",
+      "end_text": "00:00:14",
+      "text": "Voice đi"
+    },
+    {
+      "segment_id": "video2_s000010",
+      "start": 14.0,
+      "end": 15.5,
+      "start_text": "00:00:14",
+      "end_text": "00:00:16",
+      "text": "Gra"
+    },
+    {
+      "segment_id": "video2_s000011",
+      "start": 25.64,
+      "end": 26.64,
+      "start_text": "00:00:26",
+      "end_text": "00:00:27",
+      "text": "Gra"
+    }
+  ]
+}

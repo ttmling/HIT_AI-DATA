@@ -8,7 +8,7 @@
     "image_path": "output/video1/frames/frame_000001.jpg",
     "ocr": {
       "status": "done",
-      "text": "khi mục tiêu 9+ mà\nđề\nchỉ có 5.25ạ\nTôi kiểu\nVR\ngiải\n2",
+      "text": "khi mục tiêu 9+ mà đề chỉ có 5.25ạ Tôi kiểu VR giải 2",
       "avg_confidence": 0.7099263645354774,
       "boxes": [
         {
@@ -171,6 +171,22 @@
       "status": "done",
       "text": "a woman in a dress is holding a microphone",
       "model": "Salesforce/blip-image-captioning-base"
+    },
+    "objects": {
+      "status": "done",
+      "model": "yolov8n",
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 0.9273,
+          "bbox": [
+            118.8,
+            377.4,
+            390.9,
+            645.6
+          ]
+        }
+      ]
     }
   }
 ]

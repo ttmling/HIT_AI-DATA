@@ -37,6 +37,9 @@ def run_ocr_for_video(video_output_dir: Path, languages: list[str]) -> list[dict
         return frames_metadata
 
     for frame in frames_metadata:
+        if frame.get("ocr", {}).get("status") == "done":
+            continue
+
         image_path = Path(frame["image_path"])
         results = reader.readtext(str(image_path))
 
@@ -57,7 +60,7 @@ def run_ocr_for_video(video_output_dir: Path, languages: list[str]) -> list[dict
 
         frame["ocr"] = {
             "status": "done",
-            "text": "\n".join(texts),
+            "text": " ".join(texts),
             "avg_confidence": (
                 sum(confidences) / len(confidences) if confidences else None
             ),

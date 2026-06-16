@@ -1,9 +1,10 @@
 from pathlib import Path
 
-from asr import run_asr_for_video
-from caption import run_caption_for_video
 from keyframes import create_keyframes
 from ocr import run_ocr_for_video
+from caption import run_caption_for_video
+from detect import run_detection_for_video
+from asr import run_asr_for_video
 from utils import ensure_dir
 
 
@@ -18,9 +19,11 @@ WHISPER_MODEL = "small"
 SUPPORTED_VIDEO_EXTENSIONS = {".mp4", ".mov", ".mkv", ".avi", ".webm"}
 
 
+
 def make_video_id(video_name: str) -> str:
     """Tạo video_id đơn giản từ tên file video."""
     return Path(video_name).stem.lower().replace(" ", "_")
+
 
 
 def find_videos_in_data_folder(data_dir: Path) -> list[Path]:
@@ -47,6 +50,8 @@ def find_videos_in_data_folder(data_dir: Path) -> list[Path]:
     return videos
 
 
+
+
 def run_pipeline_for_video(video_path: Path) -> Path:
 
     video_id = make_video_id(video_path.name)
@@ -60,7 +65,7 @@ def run_pipeline_for_video(video_path: Path) -> Path:
 
     print(f"PROCESSING VIDEO: {video_path.name}")
 
-    print("[1/3] Cắt keyframe từ video")
+    print("[1/5] Cắt keyframe từ video")
     create_keyframes(
         video_path=video_path,
         video_id=video_id,
@@ -70,18 +75,23 @@ def run_pipeline_for_video(video_path: Path) -> Path:
         source_info=source_info,
     )
 
-    print("[2/4] OCR trên keyframe")
+    print("[2/5] OCR trên keyframe")
     run_ocr_for_video(
         video_output_dir=video_output_dir,
         languages=OCR_LANGUAGES,
     )
 
-    print("[3/4] Sinh caption tự động cho keyframe (BLIP)")
+    print("[3/5] Sinh caption tự động cho keyframe (BLIP)")
     run_caption_for_video(
         video_output_dir=video_output_dir,
     )
 
-    print("[4/4] ASR (Whisper) chuyển audio -> text")
+    print("[4/5] Object detection trên keyframe (YOLOv8n)")
+    run_detection_for_video(
+        video_output_dir=video_output_dir,
+    )
+
+    print("[5/5] ASR (Whisper) chuyển audio -> text")
     run_asr_for_video(
         video_path=video_path,
         video_output_dir=video_output_dir,
